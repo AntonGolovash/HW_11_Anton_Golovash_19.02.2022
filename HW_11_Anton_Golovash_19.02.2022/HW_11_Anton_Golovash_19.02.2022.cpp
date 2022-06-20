@@ -26,6 +26,7 @@ public:
 	{
 		delete this;
 	}
+	
 	friend bool operator> (const Subscriber &left, const Subscriber &right)
 	{
 		return left.phoneNumber > right.phoneNumber;
@@ -52,6 +53,27 @@ public:
 	};
 	friend bool operator== (const Subscriber& left, const Subscriber& right);
 	friend bool operator== (const Subscriber& left, const string& right);
+	
+	
+	static auto& Search(set<Subscriber>& set, string& str)
+	{
+		string data = "";
+
+		cout << "For searching, please, enter the data" << endl;
+		cin >> data;
+		auto Result = find(set.begin(), set.end(), set.rbegin());
+
+		if (Result == set.end())
+		{
+			cout << "String is NOT found" << endl;
+		}
+		else
+		{
+			cout << "String is found" << endl;
+		}
+
+		return Result;
+	}
 
 private:
 	string phoneNumber;
@@ -80,7 +102,12 @@ int main()
 	};
 	Subscriber sb;
 	Subscriber sb1;
-	sb == sb1;
+
+	if (sb == sb1)
+	{
+		cout << "Objects are equale" << endl;
+	};
+
 	sb == "";
 	auto it = Subscriber_Set.begin();
 	string to_find = "Samburov";
@@ -90,31 +117,14 @@ int main()
 		{
 
 		}
-		it;
+		it++;
 	}
+
 
 	multiset <Subscriber> PhoneBookMultiSet;
 	map <int, Subscriber> PhoneBookMap;
 	multimap <int, Subscriber> PhoneBookMultiMap;
 
-	string data = "";
-
-	while (true)
-	{
-		cout << "For searching, please, enter the data" << endl;
-		cin >> data;
-		auto find_Result = find(Subscriber_Set.begin(), Subscriber_Set.end(), Subscriber_Set.rbegin());
-
-		if (find_Result == Subscriber_Set.end())
-		{
-			cout << "String is NOT found" << endl;
-		}
-		else
-		{
-			cout << "String is found" << endl;
-		}
-
-	}
 
 	return 0;
 }
